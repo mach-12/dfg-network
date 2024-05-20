@@ -8,37 +8,9 @@ import './App.css';
 
 Modal.setAppElement('#root');
 
-interface Node {
-  id: string;
-  isClusterNode: boolean;
-  name: string;
-  profile: string;
-  linkedin_url: string;
-  image: string;
-  size: number;
-  x: string;  // Assuming these are numbers
-  y: string;
-  z: string;
-}
-
-interface Link {
-  source: string;
-  target: string;
-}
-
-class NodeClass {
-  nodes: Node[];
-  links: Link[];
-
-  constructor(nodes: Node[], links: Link[]) {
-    this.nodes = nodes;
-    this.links = links;
-  }
-}
-
 const App: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [nodeData, setNodeData] = useState<Partial<Node>>({});
+  const [nodeData, setNodeData] = useState<any>({});
 
   const handleNodeClick = (node: Node) => {
     setNodeData(node);
