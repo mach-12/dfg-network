@@ -77,6 +77,9 @@ button:focus-visible {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  max-width: 90%; /* Ensure the modal doesn't exceed 90% of the viewport width */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .overlay {
@@ -88,8 +91,16 @@ button:focus-visible {
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 999;
 }
+
 button:hover {
   border-color: #646cff;
+}
+
+/* Media query for larger screens */
+@media (min-width: 600px) {
+  .modal {
+    max-width: 500px; /* Limit the width on larger screens */
+  }
 }
 
 /* blue: #181d7a */
