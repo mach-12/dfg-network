@@ -1,3 +1,5 @@
+/* eslint no-use-before-define: 0 */  // --> OFF
+
 import React, { useState } from 'react';
 import data from './data/data.json';
 import { ForceGraph2D } from 'react-force-graph';
