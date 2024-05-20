@@ -6,13 +6,14 @@ import { ForceGraph2D } from 'react-force-graph';
 import Modal from 'react-modal';
 import './App.css';
 
+
 Modal.setAppElement('#root');
 
-const App: React.FC = () => {
+const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [nodeData, setNodeData] = useState<any>({});
+  const [nodeData, setNodeData] = useState({});
 
-  const handleNodeClick = (node: Node) => {
+  const handleNodeClick = (node) => {
     setNodeData(node);
     setModalIsOpen(true);
   };
@@ -27,7 +28,7 @@ const App: React.FC = () => {
       <header className="App-header">
         Develop For Good: Network
         <a href="https://github.com/mach-12/dfg-network" target="_blank" rel="noopener noreferrer" className="github-link">
-          <i className="fab fa-github"></i> Check me out on GitHub!
+          <i className="fab fa-github"></i> Check out the GitHub Repository!
         </a>
       </header>
 
