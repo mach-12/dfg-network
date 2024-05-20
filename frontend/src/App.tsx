@@ -6,14 +6,41 @@ import { ForceGraph2D } from 'react-force-graph';
 import Modal from 'react-modal';
 import './App.css';
 
-
 Modal.setAppElement('#root');
 
-function App() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [nodeData, setNodeData] = useState({});
+interface Node {
+  id: string;
+  isClusterNode: boolean;
+  name: string;
+  profile: string;
+  linkedin_url: string;
+  image: string;
+  size: number;
+  x: string;  // Assuming these are numbers
+  y: string;
+  z: string;
+}
 
-  const handleNodeClick = (node) => {
+interface Link {
+  source: string;
+  target: string;
+}
+
+class NodeClass {
+  nodes: Node[];
+  links: Link[];
+
+  constructor(nodes: Node[], links: Link[]) {
+    this.nodes = nodes;
+    this.links = links;
+  }
+}
+
+const App: React.FC = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [nodeData, setNodeData] = useState<Partial<Node>>({});
+
+  const handleNodeClick = (node: Node) => {
     setNodeData(node);
     setModalIsOpen(true);
   };
@@ -40,6 +67,7 @@ function App() {
           backgroundColor="light"
         />
       </section>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -48,7 +76,7 @@ function App() {
         overlayClassName="overlay"
       >
         <h2>Node Details</h2>
-        {nodeData.image && <img src={nodeData.image} alt={`${nodeData.name}`} style={{ width: '100px', height: '100px' }} />}
+        {nodeData.image && <img src={nodeData.image} alt={nodeData.name} style={{ width: '100px', height: '100px' }} />}
         {nodeData.linkedin_url && <p><a href={nodeData.linkedin_url} target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>}
         <p><strong>ID:</strong> {nodeData.id}</p>
         <p><strong>Name:</strong> {nodeData.name}</p>
@@ -57,6 +85,6 @@ function App() {
       </Modal>
     </div>
   );
-}
+};
 
 export default App;
